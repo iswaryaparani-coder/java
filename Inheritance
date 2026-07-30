@@ -1,1 +1,142 @@
+import java.util.Scanner;
+class Employee{
+String empname,address,mailid;
+int mobileno,id;
+double da,hra,pf,basicPay,grossSalary,netSalary,staffclub;
+Scanner sc=new Scanner(System.in);
+
+void getDetails(){
+System.out.println("Enter Employee name:");
+empname=sc.nextLine();
+
+System.out.println("Enter Employee id:");
+id=sc.nextInt();
+sc.nextLine();
+
+System.out.println("Enter Address:");
+address=sc.nextLine();
+
+System.out.println("Enter Mail id:");
+mailid=sc.nextLine();
+
+System.out.println("Enter Mobile no:");
+mobileno=sc.nextInt();
+sc.nextLine();
+
+System.out.println("Enter Employee basic Pay:");
+basicPay=sc.nextDouble();
+}
+void display(String designation){
+System.out.println("\n----PAY SLIP-------");
+System.out.println("Designation:"+designation);
+System.out.println("Enter Employee name:"+empname);	
+System.out.println("Enter Address:"+address);	
+System.out.println("Enter Mail id:"+mailid);	
+System.out.println("Enter Mobile no:"+mobileno);
+
+System.out.println("\nBasic Pay:"+basicPay);	
+System.out.println("DA:"+da);	
+System.out.println("HRA:"+hra);	
+System.out.println("PF:"+pf);	
+System.out.println("Staff Club:"+staffclub);
+System.out.println("-------------");
+System.out.println("Gross Salary:"+grossSalary);
+System.out.println("Net Salary:"+netSalary);
+}
+}
+class Programmer extends Employee{
+void calculateSalary(){
+da=basicPay*97/100;
+hra=basicPay*10/100;
+pf=basicPay*12/100;
+staffclub=basicPay*1/100;
+
+grossSalary=basicPay+da+hra;
+netSalary=grossSalary-pf-staffclub;
+}
+}
+
+class AssistantProfessor extends Employee{
+void calculateSalary(){
+da = basicPay*110/100;
+hra = basicPay*20/100;
+pf = basicPay*12/100;
+staffclub = basicPay*5/100;
+
+grossSalary = basicPay+da+hra;
+netSalary = grossSalary-pf-staffclub;
+}
+}
+
+class AssociateProfessor extends Employee{
+void calculateSalary(){
+da = basicPay*130/100;
+hra = basicPay*30/100;
+pf = basicPay*12/100;
+staffclub = basicPay*10/100;
+
+grossSalary = basicPay+da+hra;
+netSalary = grossSalary-pf-staffclub;
+}
+}
+
+class Professor extends Employee{
+void calculateSalary(){
+da = basicPay*140/100;
+hra = basicPay*40/100;
+pf = basicPay*12/100;
+staffclub = basicPay*15/100;
+
+grossSalary = basicPay+da+hra;
+netSalary = grossSalary-pf-staffclub;
+}
+}
+
+public class EmployeePayroll{
+public static void main(String[] args){
+Scanner sc=new Scanner(System.in);
+System.out.println("1.Programmer");
+System.out.println("2.Assistant Professor");
+System.out.println("3.Associate Professor");
+System.out.println("4.Professor");
+System.out.println("Enter your choice:");
+int choice=sc.nextInt();
+
+
+switch(choice){
+case 1:
+Programmer p=new Programmer();
+p.getDetails();
+p.calculateSalary();
+p.display("Programmer");
+break;
+
+case 2:
+AssistantProfessor ap=new AssistantProfessor();
+ap.getDetails();
+ap.calculateSalary();
+ap.display("Assistant Professor");
+break;
+
+case 3:
+AssociateProfessor asp=new AssociateProfessor();
+asp.getDetails();
+asp.calculateSalary();
+asp.display("Associate Professor");
+break;
+
+case 4:
+Professor pr=new Professor();
+pr.getDetails();
+pr.calculateSalary();
+pr.display("Professor");
+break;
+
+default:
+System.out.println("Invaild Choice");
+}
+}
+}
+
+
 
